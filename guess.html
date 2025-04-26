@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<style>
+    body {
+        background-color: rgb(196, 133, 205);
+    }
+    h2 {
+        font-size: 50px;
+        color: rgb(14, 13, 13);
+        padding-left: 500px;
+        padding-bottom: 70px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    p {
+        font-size: 30px;
+        padding-left: 300px;
+        padding-top: 10px;
+    }
+
+    #win,
+    #lose {
+        font-size: 35px;
+        padding-bottom: 10px;
+    }
+
+    button {
+        font-size: 30px;
+        padding: 15px;
+        margin-left: 760px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>
+
+<body>
+    <h2>
+        Welcome to my Guessing Game
+    </h2>
+
+    <p>
+        Wins
+    <p id="win">0</p>
+    </p>
+
+    <p>
+        Lost
+    <p id="lose">0</p>
+    </p>
+
+    <button onclick="guess()">
+        Try Again
+    </button>
+
+    <script>
+        function updateValue(id) {
+            const stringScore = document.getElementById(id);
+            let value = stringScore.innerHTML;
+            const scoreValue = parseInt(value);
+            stringScore.innerHTML = `${scoreValue + 1}`
+        }
+
+        function guess() {
+            const userInput = parseInt(prompt("Enter your guess!"));
+            if (userInput === null) {
+                console.log("Invalid input found")
+                return
+            }
+            const computerGuess = Math.floor(Math.random() * 15);
+            console.log(userInput)
+    
+            if (userInput === computerGuess) {
+                updateValue("won")
+                alert(`You won! The number is ${computerGuess}`)
+            } else {
+                updateValue("lose")
+                alert(`You Lost! The number is ${computerGuess}`)
+            }
+        }
+
+    </script>                           
+</body>
+
+</html>
